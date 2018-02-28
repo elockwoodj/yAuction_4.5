@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using yAuction.Data.IDAO;
+using yAuction.Data.DAO;
+
+namespace yAuction.Data.IDAO
+{
+    public interface auctionIDAO
+    {
+        IList<listing_Category> GetListingCategory();
+
+        yAuction.Data.Listings GetListings(int id);
+    }
+}
