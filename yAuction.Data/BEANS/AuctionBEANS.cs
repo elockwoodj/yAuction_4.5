@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace yAuction.Data.BEANS
 {
-    class AuctionBEANS
+    public class AuctionBEANS
     {
+        public AuctionBEANS() { }
+
+
     }
 }

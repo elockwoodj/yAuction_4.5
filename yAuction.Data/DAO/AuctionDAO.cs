@@ -23,10 +23,10 @@ namespace yAuction.Data.DAO
             return _listing.ToList<listing_Category>();
         }
 
-        public Listings GetListings(int id)
-        {
-            return ;
-        }
+        //public Listings GetListings(int id)
+        //{
+        //    return ;
+        //}
 
         //change
     }
