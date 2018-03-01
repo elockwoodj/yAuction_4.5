@@ -10,7 +10,7 @@ namespace yAuction.Data.IDAO
 {
     public interface AuctionIDAO
     {
-        IList<listing_Category> GetListingCategory();
+        IList<listing_Category> GetListingCategory(int category);
 
         //yAuction.Data.Listings GetListings(int id);
 

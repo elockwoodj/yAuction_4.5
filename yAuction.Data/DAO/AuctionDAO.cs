@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using yAuction.Data.IDAO;
+using yAuction.Data.BEANS;
 
 namespace yAuction.Data.DAO
 {
@@ -14,13 +15,17 @@ namespace yAuction.Data.DAO
         {
             _context = new a9027410Entities();
         }
-        public IList<listing_Category> GetListingCategory()
+        public IList<listing_Category> GetListingCategory(int category)
         {
-            IQueryable<listing_Category> _listing;
-            _listing = from listing
-                       in _context.listing_Category
-                       select listing;
-            return _listing.ToList<listing_Category>();
+            IQueryable<AuctionBEANS> _listingBEANs = from list in _context.listing_Category
+                                                     from categ in _context.Listings
+                                                     where list.category == categ.Id
+                                                     where categ.Id == category
+                                                     select new AuctionBEANS
+                                                     {
+
+                                                     }
+
         }
 
         //public Listings GetListings(int id)
