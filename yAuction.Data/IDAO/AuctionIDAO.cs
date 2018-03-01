@@ -8,7 +8,7 @@ using yAuction.Data.DAO;
 
 namespace yAuction.Data.IDAO
 {
-    public interface auctionIDAO
+    public interface AuctionIDAO
     {
         IList<listing_Category> GetListingCategory();
 

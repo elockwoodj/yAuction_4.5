@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BEANS\AuctionBEANS.cs" />
     <Compile Include="DAO\AuctionDAO.cs" />
     <Compile Include="IDAO\AuctionIDAO.cs" />
     <Compile Include="Listings.cs">
@@ -78,9 +79,7 @@
       <DependentUpon>yAuction.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BEANS\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EntityDeploy Include="yAuction.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

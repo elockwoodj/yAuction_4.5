@@ -7,10 +7,10 @@ using yAuction.Data.IDAO;
 
 namespace yAuction.Data.DAO
 {
-    public class auctionDAO : auctionIDAO
+    public class AuctionDAO : AuctionIDAO
     {
         private a9027410Entities _context;
-        public auctionDAO()
+        public AuctionDAO()
         {
             _context = new a9027410Entities();
         }
