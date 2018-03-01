@@ -11,5 +11,8 @@ namespace yAuction.Data.BEANS
         public AuctionBEANS() { }
 
 
+
+
+
     }
 }
