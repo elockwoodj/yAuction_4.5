@@ -15,6 +15,6 @@ namespace yAuction.Data.IDAO
         yAuction.Data.Listings GetListings(int id);
 
 
-        //testestsetsetsetstdfjytf5giuhtsetsetsetsetset
+        //testestsetsetsetstd
     }
 }
