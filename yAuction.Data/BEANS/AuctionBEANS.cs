@@ -8,5 +8,12 @@ namespace yAuction.Data.BEANS
 {
     class AuctionBEANS
     {
+
+
+        //hiyaaaaa
+
+
+
+
     }
 }
