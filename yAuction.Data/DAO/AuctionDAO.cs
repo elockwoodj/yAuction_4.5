@@ -17,6 +17,7 @@ namespace yAuction.Data.DAO
         }
         public IList<AuctionBEANS> GetListings(int category)
         {
+            //Place variables from the tables into the beans
             IQueryable<AuctionBEANS> _listingBEANs = from list in _context.Listings
                                                      from categ in _context.listing_Category
                                                      where list.category == categ.Id
@@ -31,6 +32,7 @@ namespace yAuction.Data.DAO
                                                          priceAuction = list.priceAuction,
                                                          priceBuy = list.priceBuy
                                                      };
+
             return _listingBEANs.ToList<AuctionBEANS>();
 
         }

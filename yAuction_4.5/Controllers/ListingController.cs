@@ -12,16 +12,31 @@ namespace yAuction_4._5.Controllers
 {
     public class ListingController : ApiController
     {
-        private yAuction.Data.BEANS.AuctionBEANS _listingService;
+        private yAuction.Data.DAO.AuctionDAO _listingService;
 
         public ListingController()
         {
-            _listingService = new yAuction.Data.BEANS.AuctionBEANS();
+            _listingService = new yAuction.Data.DAO.AuctionDAO();
         }
-        public HttpResponseMessage GetListings()
-        {
-            IEnumerable<AuctionBEANS> listings =
 
+        public System.Net.Http.HttpResponseMessage GetListings(int id)
+        {
+            //Ask Dharam about BEANs in Controllers while exposing API's - not sure as to process 
+            yAuction.Data.Listings listing =
+                //This GetListings refers to the AuctionDAO method, wihch cannot be converted into this data type
+                _listingService.GetListings(id);
+            if (listing == null)
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotFound);
+                return response;
+            }
+            else
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.OK, listing);
+                return response;
+            }
         }
 
 
