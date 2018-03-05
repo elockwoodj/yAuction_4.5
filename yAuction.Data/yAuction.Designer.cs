@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\MyWork\yAuction_4.5\yAuction_4.5\yAuction.Data\yAuction.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\System Design & Development Project\Project\yAuction_4.5\yAuction.Data\yAuction.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
