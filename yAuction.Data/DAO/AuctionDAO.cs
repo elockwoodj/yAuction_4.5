@@ -17,12 +17,16 @@ namespace yAuction.Data.DAO
         }
         public IList<listing_Category> GetListingCategory(int category)
         {
-            IQueryable<AuctionBEANS> _listingBEANs = from list in _context.listing_Category
-                                                     from categ in _context.Listings
-                                                     where list.category == categ.Id
+            IQueryable<AuctionBEANS> _listingBEANs = from categ in _context.listing_Category
+                                                     from list in _context.Listings
+                                                     where categ.category == list.Id
                                                      where categ.Id == category
                                                      select new AuctionBEANS
                                                      {
+                                                         //Id = 
+
+
+
 
                                                      };
 
