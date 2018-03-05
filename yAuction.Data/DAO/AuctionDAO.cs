@@ -71,5 +71,15 @@ namespace yAuction.Data.DAO
         //}
 
         //change
+
+        public IList<listing_Category>GetCategories()
+        {
+            IQueryable<listing_Category> _categories;
+            _categories = from category
+                          in _context.listing_Category
+                          select category;
+
+            return _categories.ToList<listing_Category>();
+        }
     }
 }

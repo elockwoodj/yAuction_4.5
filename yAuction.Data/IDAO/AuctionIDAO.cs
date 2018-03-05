@@ -12,6 +12,7 @@ namespace yAuction.Data.IDAO
     public interface AuctionIDAO
     {
         IList<AuctionBEANS> GetListings(int category);
+        IList<listing_Category> GetCategories();
 
         bool AddListing(Listings _newListing);
 
