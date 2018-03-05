@@ -23,6 +23,7 @@ namespace yAuction.Data.DAO
                                                      where categ.Id == category
                                                      select new AuctionBEANS
                                                      {
+                                                         new 
                                                          //Id = 
 
 
