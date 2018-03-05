@@ -5,16 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using yAuction.Data.IDAO;
 using yAuction.Data.DAO;
+using yAuction.Data.BEANS;
 
 namespace yAuction.Data.IDAO
 {
     public interface AuctionIDAO
     {
-        IList<listing_Category> GetListingCategory(int category);
-
-        //yAuction.Data.Listings GetListings(int id);
+        IList<AuctionBEANS> GetListings(int category);
 
 
-        //testestsetsetsetstd
     }
 }

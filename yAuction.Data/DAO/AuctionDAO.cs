@@ -15,7 +15,7 @@ namespace yAuction.Data.DAO
         {
             _context = new a9027410Entities();
         }
-        public IList<listing_Category> GetListingCategory(int category)
+        public IList<AuctionBEANS> GetListings(int category)
         {
             IQueryable<AuctionBEANS> _listingBEANs = from categ in _context.listing_Category
                                                      from list in _context.Listings
@@ -23,12 +23,15 @@ namespace yAuction.Data.DAO
                                                      where categ.Id == category
                                                      select new AuctionBEANS
                                                      {
-                                                         //Id = 
-
-
-
-
+                                                         Id = list.Id,
+                                                         description = list.description,
+                                                         image = list.image,
+                                                         category = categ.category,
+                                                         priceStart = list.priceStart,
+                                                         priceAuction = list.priceAuction,
+                                                         priceBuy = list.priceBuy
                                                      };
+            return _context.ToList<AuctionBEANS>();
 
         }
 
