@@ -38,6 +38,18 @@ namespace yAuction.Data.DAO
 
         }
 
+        //Listing check
+
+        public bool ListingCheck(int Id)
+        {
+            IQueryable<int> idList = from lists
+                                     in _context.Listings
+                                     select lists.Id;
+            if(idList.ToList<int>().Contains(Id))
+            { return true; } else { return false; }          
+        }
+
+        //Add new listing funcionality
         public bool AddListing (Listings _newListing)
         {
             try
@@ -67,12 +79,24 @@ namespace yAuction.Data.DAO
             }
         }
 
-        //public Listings GetListings(int id)
-        //{
-        //    return ;
-        //}
+        //Delete Listing Functionality
+        public bool DeleteListing(Listings _listing)
+        {
+            bool check = ListingCheck(_listing.Id);
+            if (check == false)
+            {
+                return false;
+            }
+            else
+            {
+                _context.Listings.Remove(_listing);
+                _context.SaveChanges();
+                return true;
+            }
+        }
 
-        //change
+
+       //Get list of listing categories method
 
         public IList<listing_Category>GetCategories()
         {
