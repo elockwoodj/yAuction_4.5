@@ -53,6 +53,9 @@
     <Compile Include="BEANS\AuctionBEANS.cs" />
     <Compile Include="DAO\AuctionDAO.cs" />
     <Compile Include="IDAO\AuctionIDAO.cs" />
+    <Compile Include="listingBid.cs">
+      <DependentUpon>yAuction.tt</DependentUpon>
+    </Compile>
     <Compile Include="Listings.cs">
       <DependentUpon>yAuction.tt</DependentUpon>
     </Compile>

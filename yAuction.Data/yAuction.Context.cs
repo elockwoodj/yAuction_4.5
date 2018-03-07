@@ -26,7 +26,8 @@ namespace yAuction.Data
         }
     
         public virtual DbSet<listing_Category> listing_Category { get; set; }
-        public virtual DbSet<Listings> Listings { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<listingBid> listingBid { get; set; }
+        public virtual DbSet<Listings> Listings { get; set; }
     }
 }

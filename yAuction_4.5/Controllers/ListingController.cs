@@ -24,6 +24,7 @@ namespace yAuction_4._5.Controllers
             //Ask Dharam about BEANs in Controllers while exposing API's - not sure as to process 
             yAuction.Data.Listings listing =
                 //This GetListings refers to the AuctionDAO method, wihch cannot be converted into this data type
+                //Ask Dharam about this VVVVV
                 _listingService.GetListings(id);
             if (listing == null)
             {

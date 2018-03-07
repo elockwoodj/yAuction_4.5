@@ -16,7 +16,7 @@ namespace yAuction.Data.BEANS
         public float priceStart { get; set; }
         public float priceAuction { get; set; }
         public float priceBuy { get; set; }
-        public int category { get; set; }
+        public string category { get; set; }
         public int categoryId { get; set; }
 
 

@@ -12,16 +12,11 @@ namespace yAuction.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Listings
+    public partial class listingBid
     {
         public int Id { get; set; }
-        public string description { get; set; }
-        public byte[] image { get; set; }
-        public double priceStart { get; set; }
-        public Nullable<double> priceAuction { get; set; }
-        public Nullable<double> priceBuy { get; set; }
-        public Nullable<int> category { get; set; }
-    
-        public virtual listing_Category listing_Category { get; set; }
+        public double bid { get; set; }
+        public int itemId { get; set; }
+        public int accountId { get; set; }
     }
 }
