@@ -82,34 +82,31 @@
       <DependentUpon>yAuction.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="yAuction.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>yAuction.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="yAuction.edmx.diagram">
       <DependentUpon>yAuction.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="yAuction.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>yAuction.Context.cs</LastGenOutput>
       <DependentUpon>yAuction.edmx</DependentUpon>
+      <LastGenOutput>yAuction.Context.cs</LastGenOutput>
     </Content>
     <Content Include="yAuction.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>yAuction.edmx</DependentUpon>
       <LastGenOutput>yAuction.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
