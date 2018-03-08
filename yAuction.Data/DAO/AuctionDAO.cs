@@ -50,10 +50,18 @@ namespace yAuction.Data.DAO
         }
 
         //Add new listing funcionality
-        public bool AddListing (Listings _newListing)
+        public bool AddListing (AuctionBEANS _listingBEAN)
         {
             try
             {
+                Listings _newListing = new Listings();
+                _newListing.description = _listingBEAN.description;
+                _newListing.image = _listingBEAN.image;
+                _newListing.priceStart = _listingBEAN.priceStart;
+                _newListing.priceAuction = _listingBEAN.priceAuction;
+                _newListing.priceBuy = _listingBEAN.priceBuy;
+                _newListing.category = _listingBEAN.categoryId;
+                _newListing.accountId = _listingBEAN.accountId;
                 _context.Listings.Add(_newListing);
                 _context.SaveChanges();
                 return true;
