@@ -15,7 +15,7 @@ namespace yAuction.Data.IDAO
         IList<listing_Category> GetCategories();
 
         bool ListingCheck(int id);
-        bool AddListing(Listings _newListing);
+        bool AddListing(AuctionBEANS _newListing);
         bool DeleteListing(Listings _listing);
     }
 }
