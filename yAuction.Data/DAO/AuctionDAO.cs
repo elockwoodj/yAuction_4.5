@@ -32,6 +32,8 @@ namespace yAuction.Data.DAO
                                                          priceStart = list.priceStart,
                                                          priceAuction = list.priceAuction,
                                                          priceBuy = list.priceBuy
+                                                         
+
                                                      };
 
             return _listingBEANs.ToList<AuctionBEANS>();
@@ -128,25 +130,44 @@ namespace yAuction.Data.DAO
 
         // Get Bid History 
 
-        public IList<listingBid> GetBidHistory(int accountId)
+        public IList<bidBEANS> GetBidHistory(int accountId)
         {
-            IQueryable<listingBid> __bidHistory;
+            IQueryable<bidBEANS> __bidHistory;
             __bidHistory = from History
                            in _context.listingBid
                            where History.accountId == accountId
-                           select History;
-            return __bidHistory.ToList<listingBid>();
+                           select new bidBEANS
+                           {
+                               Id = History.Id,
+                               bid = History.bid,
+                               itemId = History.itemId,
+                               accountId = History.accountId
+                           };
+            return __bidHistory.ToList<bidBEANS>();
         }
 
         // Get Listing History
-       public IList<Listings> GetListingHistory(int accountId)
+       public IList<AuctionBEANS> GetListingHistory(int accountId)
         {
-            IQueryable<Listings> _listingHistory;
+            IQueryable<AuctionBEANS> _listingHistory;
             _listingHistory = from LHistory
                               in _context.Listings
                               where LHistory.accountId == accountId
-                              select LHistory;
-            return _listingHistory.ToList<Listings>();
+                              select new AuctionBEANS
+                              {
+                                  Id = LHistory.Id,
+                                  description = LHistory.descroption,
+                                  image = LHistory.image,
+                                  priceStart = LHistory.priceStart,
+                                  priceAuction = LHistory.priceAuction,
+                                  priceBuy = LHistory.priceBuy,
+                                  category = LHistory.category,
+                                  categoryId = LHistory.categoryId,
+                                  accountId = LHistory.accountId
+
+                              };
+                              
+            return _listingHistory.ToList<AuctionBEANS>();
            
         }
 
