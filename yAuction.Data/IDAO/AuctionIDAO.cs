@@ -18,6 +18,6 @@ namespace yAuction.Data.IDAO
 
         bool ListingCheck(int id);
         bool AddListing(AuctionBEANS _newListing);
-        bool DeleteListing(Listings _listing);
+        bool DeleteListing(AuctionBEANS _listing);
     }
 }
