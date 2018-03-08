@@ -31,7 +31,9 @@ namespace yAuction.Data.DAO
                                                          category = categ.category,
                                                          priceStart = list.priceStart,
                                                          priceAuction = list.priceAuction,
-                                                         priceBuy = list.priceBuy
+                                                         priceBuy = list.priceBuy,
+                                                         accountId = list.accountId,
+                                                         categoryId = list.category
                                                      };
 
             return _listingBEANs.ToList<AuctionBEANS>();
