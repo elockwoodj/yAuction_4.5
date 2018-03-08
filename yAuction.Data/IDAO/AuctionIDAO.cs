@@ -17,7 +17,7 @@ namespace yAuction.Data.IDAO
         IList<Listings> GetListingHistory(int accountId);
 
         bool ListingCheck(int id);
-        bool AddListing(Listings _newListing);
+        bool AddListing(AuctionBEANS _newListing);
         bool DeleteListing(Listings _listing);
     }
 }
