@@ -38,6 +38,8 @@ namespace yAuction.Data.DAO
 
         }
 
+       
+
         //Listing check
 
         public bool ListingCheck(int Id)
@@ -115,5 +117,42 @@ namespace yAuction.Data.DAO
 
             return _categories.ToList<listing_Category>();
         }
+
+        // Get Bid History 
+
+        public IList<listingBid> GetBidHistory(int accountId)
+        {
+            IQueryable<listingBid> __bidHistory;
+            __bidHistory = from History
+                           in _context.listingBid
+                           where History.accountId == accountId
+                           select new
+                           {
+                               History.bid,
+                               History.itemId
+                           };
+            return __bidHistory.ToList<listingBid>();
+        }
+
+        // Get Listing History
+        IList<Listings> GetListingHistory(int accountId)
+        {
+            IQueryable<Listings> _listingHistory;
+            _listingHistory = from LHistory
+                              in _context.Listings
+                              where LHistory.accountId == accountId
+                              select new
+                              {
+                                  LHistory.description,
+                                  LHistory.category,
+                                  LHistory.priceStart,
+                                  LHistory.priceAuction,
+                                  //may need changing if table changed so 'final price' can be seen
+
+                              };
+            return _listingHistory.ToList<Listings>();
+           
+        }
+
     }
 }
