@@ -22,9 +22,8 @@ namespace yAuction_4._5.Controllers
         public System.Net.Http.HttpResponseMessage GetListings(int id)
         {
             //Ask Dharam about BEANs in Controllers while exposing API's - not sure as to process 
-            IList<yAuction.Data.Listings> listing =
+            IList<yAuction.Data.BEANS.AuctionBEANS> listing =
                 //This GetListings refers to the AuctionDAO method, wihch cannot be converted into this data type
-                //Ask Dharam about this VVVVV
                 _listingService.GetListings(id);
             if (listing == null)
             {
