@@ -90,16 +90,24 @@ namespace yAuction.Data.DAO
         }
 
         //Delete Listing Functionality
-        public bool DeleteListing(Listings _listing)
+        public bool DeleteListing(AuctionBEANS _listingBEAN)
         {
-            bool check = ListingCheck(_listing.Id);
+            bool check = ListingCheck(_listingBEAN.Id);
             if (check == false)
             {
                 return false;
             }
             else
             {
-                _context.Listings.Remove(_listing);
+                Listings _doomedList = new Listings();
+                _doomedList.description = _listingBEAN.description;
+                _doomedList.image = _listingBEAN.image;
+                _doomedList.priceStart = _listingBEAN.priceStart;
+                _doomedList.priceAuction = _listingBEAN.priceAuction;
+                _doomedList.priceBuy = _listingBEAN.priceBuy;
+                _doomedList.category = _listingBEAN.categoryId;
+                _doomedList.accountId = _listingBEAN.accountId;
+                _context.Listings.Remove(_doomedList);
                 _context.SaveChanges();
                 return true;
             }
@@ -126,30 +134,18 @@ namespace yAuction.Data.DAO
             __bidHistory = from History
                            in _context.listingBid
                            where History.accountId == accountId
-                           select new
-                           {
-                               History.bid,
-                               History.itemId
-                           };
+                           select History;
             return __bidHistory.ToList<listingBid>();
         }
 
         // Get Listing History
-        IList<Listings> GetListingHistory(int accountId)
+       public IList<Listings> GetListingHistory(int accountId)
         {
             IQueryable<Listings> _listingHistory;
             _listingHistory = from LHistory
                               in _context.Listings
                               where LHistory.accountId == accountId
-                              select new
-                              {
-                                  LHistory.description,
-                                  LHistory.category,
-                                  LHistory.priceStart,
-                                  LHistory.priceAuction,
-                                  //may need changing if table changed so 'final price' can be seen
-
-                              };
+                              select LHistory;
             return _listingHistory.ToList<Listings>();
            
         }
