@@ -20,8 +20,5 @@ namespace yAuction.Data.BEANS
         public int categoryId { get; set; }
         public int accountId { get; set; }
 
-
-
-
     }
 }
