@@ -63,13 +63,20 @@ namespace yAuction_4._5.Controllers
                 _listingService.GetListingHistory(accountId);
             if (_listHistory == null)
             {
-
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotFound);
+                return response;
             }
             else
             {
-
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.OK, _listHistory);
+                return response;
             }
         }
+
+
+
         // GET: api/Listing
         public IEnumerable<string> Get()
         {
