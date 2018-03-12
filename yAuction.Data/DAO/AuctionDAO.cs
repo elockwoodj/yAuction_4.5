@@ -31,9 +31,9 @@ namespace yAuction.Data.DAO
                                                          category = categ.category,
                                                          priceStart = list.priceStart,
                                                          priceAuction = list.priceAuction,
-                                                         priceBuy = list.priceBuy
-                                                         
-
+                                                         priceBuy = list.priceBuy,
+                                                         accountId = list.accountId,
+                                                         categoryId = list.category
                                                      };
 
             return _listingBEANs.ToList<AuctionBEANS>();
@@ -130,48 +130,29 @@ namespace yAuction.Data.DAO
 
         // Get Bid History 
 
-        public IList<bidBEANS> GetBidHistory(int accountId)
+        public IList<listingBid> GetBidHistory(int accountId)
         {
-            IQueryable<bidBEANS> __bidHistory;
+            IQueryable<listingBid> __bidHistory;
             __bidHistory = from History
                            in _context.listingBid
                            where History.accountId == accountId
-                           select new bidBEANS
-                           {
-                               Id = History.Id,
-                               bid = History.bid,
-                               itemId = History.itemId,
-                               accountId = History.accountId
-                           };
-            return __bidHistory.ToList<bidBEANS>();
+                           select History;
+            return __bidHistory.ToList<listingBid>();
         }
 
         // Get Listing History
-       public IList<AuctionBEANS> GetListingHistory(int accountId)
+       public IList<Listings> GetListingHistory(int accountId)
         {
-            IQueryable<AuctionBEANS> _listingHistory;
+            IQueryable<Listings> _listingHistory;
             _listingHistory = from LHistory
                               in _context.Listings
                               where LHistory.accountId == accountId
-                              select new AuctionBEANS
-                              {
-                                  Id = LHistory.Id,
-                                  description = LHistory.description,
-                                  image = LHistory.image,
-                                  priceStart = LHistory.priceStart,
-                                  priceAuction = LHistory.priceAuction,
-                                  priceBuy = LHistory.priceBuy,
-                                  category = LHistory.category,
-                                  categoryId = LHistory.categoryId,
-                                  accountId = LHistory.accountId
-
-                              };
-                              
-            return _listingHistory.ToList<AuctionBEANS>();
-
-            //TEST
+                              select LHistory;
+            return _listingHistory.ToList<Listings>();
            
         }
 
+
+        //TEST
     }
 }

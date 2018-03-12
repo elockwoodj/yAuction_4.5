@@ -17,8 +17,8 @@ namespace yAuction.Data.BEANS
         public Nullable<double> priceAuction { get; set; }
         public Nullable<double> priceBuy { get; set; }
         public string category { get; set; }
-        public int categoryId { get; set; }
-        public int accountId { get; set; }
+        public Nullable<int> categoryId { get; set; }
+        public Nullable<int> accountId { get; set; }
 
     }
 }
