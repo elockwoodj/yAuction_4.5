@@ -21,7 +21,6 @@ namespace yAuction_4._5.Controllers
 
         public System.Net.Http.HttpResponseMessage GetListings(int id)
         {
-            //Ask Dharam about BEANs in Controllers while exposing API's - not sure as to process 
             IList<yAuction.Data.BEANS.AuctionBEANS> listing =  _listingService.GetListings(id);
 
             if (listing == null)
