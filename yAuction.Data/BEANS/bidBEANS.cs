@@ -10,7 +10,6 @@ namespace yAuction.Data.BEANS
     public class bidBEANS
     {
         public bidBEANS() { }
-
         public int Id { get; set; }
         public double bid { get; set; }
         public int itemId { get; set; }

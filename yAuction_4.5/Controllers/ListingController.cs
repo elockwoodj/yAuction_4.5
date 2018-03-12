@@ -39,6 +39,37 @@ namespace yAuction_4._5.Controllers
         }
 
 
+        public System.Net.Http.HttpResponseMessage GetBidHistory(int accountId)
+        {
+            IEnumerable<yAuction.Data.listingBid> _bids =
+                _listingService.GetBidHistory(accountId);
+            if (_bids == null)
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotFound);
+                return response;
+            }
+            else
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.OK, _bids);
+                return response;
+            }
+        }
+
+        public System.Net.Http.HttpResponseMessage GetListingHistory(int accountId)
+        {
+            IEnumerable<yAuction.Data.Listings> _listHistory =
+                _listingService.GetListingHistory(accountId);
+            if (_listHistory == null)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
         // GET: api/Listing
         public IEnumerable<string> Get()
         {
