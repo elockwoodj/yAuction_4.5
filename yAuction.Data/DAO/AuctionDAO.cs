@@ -40,7 +40,15 @@ namespace yAuction.Data.DAO
 
         }
 
-       
+        //Get one particular listing method
+
+        public Listings GetSingularListing(int Id)
+        {
+            IQueryable<Listings> _listingBEAN = from list in _context.Listings
+                                                where list.Id == Id
+                                                select list;
+            return _listingBEAN.ToList<Listings>().First();
+        }
 
         //Listing check
 
@@ -49,12 +57,13 @@ namespace yAuction.Data.DAO
             IQueryable<int> idList = from lists
                                      in _context.Listings
                                      select lists.Id;
-            if(idList.ToList<int>().Contains(Id))
-            { return true; } else { return false; }          
+            if (idList.ToList<int>().Contains(Id))
+            { return true; }
+            else { return false; }
         }
 
         //Add new listing funcionality
-        public bool AddListing (AuctionBEANS _listingBEAN)
+        public bool AddListing(AuctionBEANS _listingBEAN)
         {
             try
             {
@@ -115,10 +124,30 @@ namespace yAuction.Data.DAO
             }
         }
 
+        //Edit the Listing function
 
-       //Get list of listing categories method
+        public bool EditListing(AuctionBEANS _listingBEAN)
+        {
+            if (ListingCheck(_listingBEAN.Id) == true)
+            {
+                Listings update = GetSingularListing(_listingBEAN.Id);
+                update.category = _listingBEAN.categoryId;
+                update.description = _listingBEAN.description;
+                update.image = _listingBEAN.image;
+                update.priceBuy = _listingBEAN.priceBuy;
+                _context.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        public IList<listing_Category>GetCategories()
+
+        //Get list of listing categories method
+
+        public IList<listing_Category> GetCategories()
         {
             IQueryable<listing_Category> _categories;
             _categories = from category
@@ -141,7 +170,7 @@ namespace yAuction.Data.DAO
         }
 
         // Get Listing History
-       public IList<Listings> GetListingHistory(int accountId)
+        public IList<Listings> GetListingHistory(int accountId)
         {
             IQueryable<Listings> _listingHistory;
             _listingHistory = from LHistory
@@ -149,10 +178,37 @@ namespace yAuction.Data.DAO
                               where LHistory.accountId == accountId
                               select LHistory;
             return _listingHistory.ToList<Listings>();
-           
+
         }
 
+        public bool MakeBid(bidBEANS _newBid)
+        {
+            try
+            {
+                listingBid newHighBid = new listingBid();
+                newHighBid.bid = _newBid.bid;
+                newHighBid.itemId = _newBid.itemId;
+                newHighBid.accountId = _newBid.accountId;
+                return true;
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine
+                        ("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                return false;
+            }
+        }
 
-        //TEST
     }
 }
