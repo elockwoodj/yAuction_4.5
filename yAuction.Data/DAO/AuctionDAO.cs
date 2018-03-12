@@ -156,7 +156,7 @@ namespace yAuction.Data.DAO
                               select new AuctionBEANS
                               {
                                   Id = LHistory.Id,
-                                  description = LHistory.descroption,
+                                  description = LHistory.description,
                                   image = LHistory.image,
                                   priceStart = LHistory.priceStart,
                                   priceAuction = LHistory.priceAuction,
@@ -168,6 +168,8 @@ namespace yAuction.Data.DAO
                               };
                               
             return _listingHistory.ToList<AuctionBEANS>();
+
+            //TEST
            
         }
 
