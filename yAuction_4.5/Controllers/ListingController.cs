@@ -75,6 +75,42 @@ namespace yAuction_4._5.Controllers
             }
         }
 
+        public System.Net.Http.HttpResponseMessage GetListingCategories()
+        {
+            IEnumerable<yAuction.Data.listing_Category> _Category =
+                _listingService.GetCategories();
+            if (_Category == null)
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotFound);
+                return response;
+            }
+            else
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.OK, _Category);
+                return response;
+            }
+        }
+
+        public System.Net.Http.HttpResponseMessage postListing(yAuction.Data.BEANS.AuctionBEANS newListing)
+        {
+            if (_listingService.AddListing(newListing) == true)
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.Created, newListing);
+                response.Headers.Location =
+                    new Uri(Request.RequestUri, "/api/Listing/" + newListing.Id.ToString());
+                return response;
+            }
+            else
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotAcceptable, newListing);
+                return response;
+            }
+        }
+
 
 
         // GET: api/Listing
