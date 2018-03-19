@@ -92,6 +92,7 @@ namespace yAuction_4._5.Controllers
             }
         }
 
+        [HttpPost]
         public System.Net.Http.HttpResponseMessage postListing(yAuction.Data.BEANS.AuctionBEANS newListing)
         {
             if (_listingService.AddListing(newListing) == true)
@@ -109,7 +110,24 @@ namespace yAuction_4._5.Controllers
                 return response;
             }
         }
-
+        
+        [HttpPut]
+        public HttpResponseMessage putListing(AuctionBEANS listingChange)
+        {
+            if (_listingService.EditListing(listingChange) == true)
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.Created, listingChange);
+                response.Headers.Location =
+                    new Uri(Request.RequestUri, "/api/Listing/" + listingChange.Id.ToString());
+            }
+            else
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotAcceptable, listingChange);
+                return response;
+            }
+        }
 
 
         // GET: api/Listing
