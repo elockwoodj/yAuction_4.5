@@ -120,6 +120,7 @@ namespace yAuction_4._5.Controllers
                     Request.CreateResponse(HttpStatusCode.Created, listingChange);
                 response.Headers.Location =
                     new Uri(Request.RequestUri, "/api/Listing/" + listingChange.Id.ToString());
+                return response;
             }
             else
             {
