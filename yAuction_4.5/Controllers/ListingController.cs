@@ -7,6 +7,7 @@ using System.Web.Http;
 using yAuction.Data.DAO;
 using yAuction.Data.IDAO;
 using yAuction.Data.BEANS;
+using yAuction.Data;
 
 namespace yAuction_4._5.Controllers
 {

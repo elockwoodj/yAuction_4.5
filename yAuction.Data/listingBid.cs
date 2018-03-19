@@ -18,8 +18,5 @@ namespace yAuction.Data
         public double bid { get; set; }
         public int itemId { get; set; }
         public int accountId { get; set; }
-    
-        public virtual Listings Listings { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

@@ -14,12 +14,6 @@ namespace yAuction.Data
     
     public partial class Listings
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Listings()
-        {
-            this.listingBid = new HashSet<listingBid>();
-        }
-    
         public int Id { get; set; }
         public string description { get; set; }
         public byte[] image { get; set; }
@@ -28,10 +22,5 @@ namespace yAuction.Data
         public Nullable<double> priceBuy { get; set; }
         public Nullable<int> category { get; set; }
         public Nullable<int> accountId { get; set; }
-    
-        public virtual listing_Category listing_Category { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<listingBid> listingBid { get; set; }
-        public virtual Users Users { get; set; }
     }
 }

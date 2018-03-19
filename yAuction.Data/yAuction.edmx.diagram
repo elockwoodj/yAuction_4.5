@@ -9,10 +9,6 @@
         <EntityTypeShape EntityType="a9027410Model.listingBid" Width="1.5" PointX="2.625" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="a9027410Model.Listings" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="a9027410Model.Users" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
-        <AssociationConnector Association="a9027410Model.FK_Listings_listing_Category" ManuallyRouted="false" />
-        <AssociationConnector Association="a9027410Model.FK_listingBid_Listings" ManuallyRouted="false" />
-        <AssociationConnector Association="a9027410Model.FK_listingBid_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="a9027410Model.FK_Listings_Users" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
