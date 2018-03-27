@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity.Validation;
 using yAuction.Data.IDAO;
 using yAuction.Data.BEANS;
+using yAuction.Data;
 
 namespace yAuction.Data.DAO
 {

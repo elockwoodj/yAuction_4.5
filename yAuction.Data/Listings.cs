@@ -22,5 +22,6 @@ namespace yAuction.Data
         public Nullable<double> priceBuy { get; set; }
         public Nullable<int> category { get; set; }
         public Nullable<int> accountId { get; set; }
+        public DateTime startDate { get; internal set; }
     }
 }
