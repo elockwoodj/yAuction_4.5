@@ -7,21 +7,22 @@ using System.Web.Http;
 using yAuction.Data.DAO;
 using yAuction.Data.IDAO;
 using yAuction.Data.BEANS;
+using yAuction.Data;
 
 namespace yAuction_4._5.Controllers
 {
     public class ListingController : ApiController
     {
-        private yAuction.Data.DAO.AuctionDAO _listingService;
+        private AuctionDAO _listingService;
 
         public ListingController()
         {
             _listingService = new yAuction.Data.DAO.AuctionDAO();
         }
 
-        public System.Net.Http.HttpResponseMessage GetListings(int id)
+        public HttpResponseMessage GetListings(int id)
         {
-            IList<yAuction.Data.BEANS.AuctionBEANS> listing =  _listingService.GetListings(id);
+            IList<AuctionBEANS> listing =  _listingService.GetListings(id);
 
             if (listing == null)
             {
@@ -38,9 +39,9 @@ namespace yAuction_4._5.Controllers
         }
 
 
-        public System.Net.Http.HttpResponseMessage GetBidHistory(int accountId)
+        public HttpResponseMessage GetBidHistory(int accountId)
         {
-            IEnumerable<yAuction.Data.listingBid> _bids =
+            IEnumerable<listingBid> _bids =
                 _listingService.GetBidHistory(accountId);
             if (_bids == null)
             {
@@ -56,9 +57,9 @@ namespace yAuction_4._5.Controllers
             }
         }
 
-        public System.Net.Http.HttpResponseMessage GetListingHistory(int accountId)
+        public HttpResponseMessage GetListingHistory(int accountId)
         {
-            IEnumerable<yAuction.Data.Listings> _listHistory =
+            IEnumerable<Listings> _listHistory =
                 _listingService.GetListingHistory(accountId);
             if (_listHistory == null)
             {
@@ -74,9 +75,9 @@ namespace yAuction_4._5.Controllers
             }
         }
 
-        public System.Net.Http.HttpResponseMessage GetListingCategories()
+        public HttpResponseMessage GetListingCategories()
         {
-            IEnumerable<yAuction.Data.listing_Category> _Category =
+            IEnumerable<listing_Category> _Category =
                 _listingService.GetCategories();
             if (_Category == null)
             {
@@ -92,7 +93,8 @@ namespace yAuction_4._5.Controllers
             }
         }
 
-        public System.Net.Http.HttpResponseMessage postListing(yAuction.Data.BEANS.AuctionBEANS newListing)
+        [HttpPost]
+        public HttpResponseMessage postListing(AuctionBEANS newListing)
         {
             if (_listingService.AddListing(newListing) == true)
             {
@@ -109,7 +111,25 @@ namespace yAuction_4._5.Controllers
                 return response;
             }
         }
-
+        
+        [HttpPut]
+        public HttpResponseMessage putListing(AuctionBEANS listingChange)
+        {
+            if (_listingService.EditListing(listingChange) == true)
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.Created, listingChange);
+                response.Headers.Location =
+                    new Uri(Request.RequestUri, "/api/Listing/" + listingChange.Id.ToString());
+                return response;
+            }
+            else
+            {
+                HttpResponseMessage response =
+                    Request.CreateResponse(HttpStatusCode.NotAcceptable, listingChange);
+                return response;
+            }
+        }
 
 
         // GET: api/Listing

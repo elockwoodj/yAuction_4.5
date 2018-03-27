@@ -29,11 +29,11 @@ namespace yAuction.Data.DAO
                                                          description = list.description,
                                                          image = list.image,
                                                          category = categ.category,
-                                                         priceStart = list.priceStart,
-                                                         priceAuction = list.priceAuction,
                                                          priceBuy = list.priceBuy,
+                                                         startDate = list.startDate,
                                                          accountId = list.accountId,
                                                          categoryId = list.category
+
                                                      };
 
             return _listingBEANs.ToList<AuctionBEANS>();
@@ -70,11 +70,10 @@ namespace yAuction.Data.DAO
                 Listings _newListing = new Listings();
                 _newListing.description = _listingBEAN.description;
                 _newListing.image = _listingBEAN.image;
-                _newListing.priceStart = _listingBEAN.priceStart;
-                _newListing.priceAuction = _listingBEAN.priceAuction;
                 _newListing.priceBuy = _listingBEAN.priceBuy;
                 _newListing.category = _listingBEAN.categoryId;
                 _newListing.accountId = _listingBEAN.accountId;
+                _newListing.startDate = _listingBEAN.startDate;
                 _context.Listings.Add(_newListing);
                 _context.SaveChanges();
                 return true;
@@ -113,11 +112,10 @@ namespace yAuction.Data.DAO
                 Listings _doomedList = new Listings();
                 _doomedList.description = _listingBEAN.description;
                 _doomedList.image = _listingBEAN.image;
-                _doomedList.priceStart = _listingBEAN.priceStart;
-                _doomedList.priceAuction = _listingBEAN.priceAuction;
                 _doomedList.priceBuy = _listingBEAN.priceBuy;
                 _doomedList.category = _listingBEAN.categoryId;
                 _doomedList.accountId = _listingBEAN.accountId;
+                _doomedList.startDate = _listingBEAN.startDate;
                 _context.Listings.Remove(_doomedList);
                 _context.SaveChanges();
                 return true;
