@@ -17,6 +17,6 @@ namespace yAuction.Data.BEANS
         public string category { get; set; }
         public Nullable<int> categoryId { get; set; }
         public Nullable<int> accountId { get; set; }
-        public DateTime startDate { get; set; }
+        public Nullable<DateTime> startDate { get; set; }
     }
 }
