@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="a9027410Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="a9027410Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="listing_Category">
           <Key>
             <PropertyRef Name="Id" />
@@ -28,11 +28,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="50" />
           <Property Name="image" Type="image" />
-          <Property Name="priceStart" Type="float" Nullable="false" />
-          <Property Name="priceAuction" Type="float" />
           <Property Name="priceBuy" Type="float" />
           <Property Name="category" Type="int" />
           <Property Name="accountId" Type="int" />
+          <Property Name="startDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -44,78 +43,13 @@
           <Property Name="address" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="paymentInformation" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_listingBid_Listings">
-          <End Role="Listings" Type="Self.Listings" Multiplicity="1" />
-          <End Role="listingBid" Type="Self.listingBid" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Listings">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="listingBid">
-              <PropertyRef Name="itemId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_listingBid_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="listingBid" Type="Self.listingBid" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="listingBid">
-              <PropertyRef Name="accountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Listings_listing_Category">
-          <End Role="listing_Category" Type="Self.listing_Category" Multiplicity="0..1" />
-          <End Role="Listings" Type="Self.Listings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="listing_Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Listings">
-              <PropertyRef Name="category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Listings_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <End Role="Listings" Type="Self.Listings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Listings">
-              <PropertyRef Name="accountId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="a9027410ModelStoreContainer">
           <EntitySet Name="listing_Category" EntityType="Self.listing_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="listingBid" EntityType="Self.listingBid" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Listings" EntityType="Self.Listings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_listingBid_Listings" Association="Self.FK_listingBid_Listings">
-            <End Role="Listings" EntitySet="Listings" />
-            <End Role="listingBid" EntitySet="listingBid" />
-          </AssociationSet>
-          <AssociationSet Name="FK_listingBid_Users" Association="Self.FK_listingBid_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="listingBid" EntitySet="listingBid" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Listings_listing_Category" Association="Self.FK_Listings_listing_Category">
-            <End Role="listing_Category" EntitySet="listing_Category" />
-            <End Role="Listings" EntitySet="Listings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Listings_Users" Association="Self.FK_Listings_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Listings" EntitySet="Listings" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="a9027410Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -135,19 +69,6 @@
           <Property Name="itemId" Type="Int32" Nullable="false" />
           <Property Name="accountId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Listings">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="priceStart" Type="Double" Nullable="false" />
-          <Property Name="priceAuction" Type="Double" />
-          <Property Name="priceBuy" Type="Double" />
-          <Property Name="category" Type="Int32" />
-          <Property Name="accountId" Type="Int32" />
-        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -161,9 +82,21 @@
         <EntityContainer Name="a9027410Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="listing_Category" EntityType="Self.listing_Category" />
           <EntitySet Name="listingBid" EntityType="Self.listingBid" />
-          <EntitySet Name="Listings" EntityType="Self.Listings" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Listings" EntityType="a9027410Model.Listings" />
         </EntityContainer>
+        <EntityType Name="Listings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="priceBuy" Type="Double" />
+          <Property Name="category" Type="Int32" />
+          <Property Name="accountId" Type="Int32" />
+          <Property Name="startDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -188,20 +121,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Listings">
-            <EntityTypeMapping TypeName="a9027410Model.Listings">
-              <MappingFragment StoreEntitySet="Listings">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="priceStart" ColumnName="priceStart" />
-                <ScalarProperty Name="priceAuction" ColumnName="priceAuction" />
-                <ScalarProperty Name="priceBuy" ColumnName="priceBuy" />
-                <ScalarProperty Name="category" ColumnName="category" />
-                <ScalarProperty Name="accountId" ColumnName="accountId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="a9027410Model.Users">
               <MappingFragment StoreEntitySet="Users">
@@ -210,6 +129,19 @@
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="paymentInformation" ColumnName="paymentInformation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Listings">
+            <EntityTypeMapping TypeName="a9027410Model.Listings">
+              <MappingFragment StoreEntitySet="Listings">
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="accountId" ColumnName="accountId" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="priceBuy" ColumnName="priceBuy" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
