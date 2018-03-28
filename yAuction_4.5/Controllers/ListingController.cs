@@ -132,17 +132,17 @@ namespace yAuction_4._5.Controllers
         }
 
 
-        // GET: api/Listing
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //// GET: api/Listing
+        //public IEnumerable<string> Get()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
 
-        // GET: api/Listing/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET: api/Listing/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST: api/Listing
         public void Post([FromBody]string value)

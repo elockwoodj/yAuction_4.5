@@ -16,7 +16,7 @@ namespace yAuction_4._5
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Listing", action = "GetListingCategories", id = UrlParameter.Optional }
             );
         }
     }
